@@ -7,5 +7,5 @@ This repository is meant to host the helpful terraform scripts I use to create m
 ```
 $ terraform init
 $ terraform apply - var "instance_name= "
-
+$ terraform apply -destroy
 ```
