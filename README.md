@@ -1,4 +1,4 @@
-# Zach's Terraform Bible
+# Zach's Terraform Handbook
 
 ## Purpose
 
