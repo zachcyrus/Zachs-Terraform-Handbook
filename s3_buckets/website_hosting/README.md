@@ -3,8 +3,7 @@
 ## Terraform instructions
 ```
 $ terraform init
-$ terraform plan
-$ terraform apply
+$ terraform apply -var 'bucket_name=sample-name'
 
 ## To tear down
 
