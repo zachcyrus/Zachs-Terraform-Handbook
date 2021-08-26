@@ -1,3 +1,16 @@
+# Terraform script for AWS S3 static website hosting
+
+## Terraform instructions
+```
+$ terraform init
+$ terraform plan
+$ terraform apply
+
+## To tear down
+
+$ terraform apply -destroy
+```
+
 
 ## How to copy website directory and upload to s3 bucket.
 ```
