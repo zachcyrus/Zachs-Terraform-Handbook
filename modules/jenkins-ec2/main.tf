@@ -1,6 +1,6 @@
 resource "aws_security_group" "jenkins_ec2" {
-  name        = "jenkins_security"
-  description = "Jenkins Security Group"
+  name        = "${var.instance_name}-sg"
+  description = "Jenkins security group for ${var.instance_name}"
 
   ingress {
     from_port   = 8080
