@@ -12,5 +12,5 @@ This is done by creating an s3 policy that allows for public read access.
 
 After the configuration is applied the user has to sync their s3 bucket with the directory containing their static website.
 ```
-$ aws s3 cp {website_directory} {url for s3} --recursive
+$ aws s3 sync {website_directory} {url for s3} --recursive
 ```
