@@ -1,7 +1,7 @@
 resource "aws_s3_bucket" "static-website" {
-  bucket = var.bucket_name
-  acl    = "public-read"
-  policy = data.aws_iam_policy_document.bucket_policy.json
+  bucket        = var.bucket_name
+  acl           = "public-read"
+  policy        = data.aws_iam_policy_document.public_read_policy.json
   force_destroy = true
   lifecycle {
     prevent_destroy = false
@@ -14,21 +14,21 @@ resource "aws_s3_bucket" "static-website" {
 
 }
 
-resource "aws_s3_bucket_policy" "public_read" {
-  bucket = aws_s3_bucket.static-website.id
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Sid       = "PublicReadGetObject"
-        Effect    = "Allow"
-        Principal = "*"
-        Action    = "s3:GetObject"
-        Resource = [
-          aws_s3_bucket.static-website.arn,
-          "${aws_s3_bucket.static-website.arn}/*",
-        ]
-      },
+data "aws_iam_policy_document" "public_read_policy" {
+  statement {
+    sid = "AllowReadFromAll"
+
+    actions = [
+      "s3:GetObject",
     ]
-  })
+
+    resources = [
+      "arn:aws:s3:::${var.bucket_name}/*",
+    ]
+
+    principals {
+      type        = "*"
+      identifiers = ["*"]
+    }
+  }
 }

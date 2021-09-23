@@ -1,14 +1,9 @@
-output "website_bucket_name" {
+output "bucket_name" {
   description = "Name of the bucket"
   value       = aws_s3_bucket.static-website.id
 }
 
-output "bucket_endpoint" {
-  description = "Bucket endpoint"
+output "static_website_link" {
+  description = "Link to the static website"
   value       = aws_s3_bucket.static-website.website_endpoint
-}
-
-output "domain_name" {
-  description = "Website endpoint"
-  value       = var.bucket_name
 }
